@@ -2,13 +2,10 @@ package com.MVCAct3.T22Act3.view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
-
-import com.MVCAct3.T22Act3.controller.ClientController;
-import com.MVCAct3.T22Act3.controller.VideoController;
-
+import com.MVCAct3.T22Act3.controller.CientificoController;
+import com.MVCAct3.T22Act3.controller.ProyectoController;
 import javax.swing.JLabel;
 import javax.swing.JButton;
 
@@ -16,12 +13,12 @@ public class MenuView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 
-	private ClientController clientController;
-	private VideoController videoController; // objeto PersonaController que permite la relacion entre esta clase y
+	private ProyectoController proyectoController;
+	private CientificoController cientificoController; // objeto PersonaController que permite la relacion entre esta clase y
 												// la clase PersonaController
 	private JTextArea areaIntroduction;
 	private JLabel lblTitle, lblSelection;
-	private JButton btnRegisterClient, btnSearchClient, btnRegisterVideo, btnSearchVideo;
+	private JButton btnRegisterProyecto, btnSearchProyecto, btnRegisterCientifico, btnSearchCientifico;
 
 	/**
 	 * Establece la informacion que se presentara como introduccion del sistema
@@ -35,23 +32,23 @@ public class MenuView extends JFrame implements ActionListener {
 	public MenuView() {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
-		btnRegisterClient = new JButton();
-		btnRegisterClient.setBounds(100, 280, 120, 25);
-		btnRegisterClient.setText("Register Client");
+		btnRegisterProyecto = new JButton();
+		btnRegisterProyecto.setBounds(100, 280, 120, 25);
+		btnRegisterProyecto.setText("Registrar Proyecto");
 
-		btnSearchClient = new JButton();
-		btnSearchClient.setBounds(240, 280, 120, 25);
-		btnSearchClient.setText("Search Client");
+		btnSearchProyecto = new JButton();
+		btnSearchProyecto.setBounds(240, 280, 120, 25);
+		btnSearchProyecto.setText("Buscar Proyecto");
 
-		btnRegisterVideo = new JButton();
-		btnRegisterVideo.setText("Register Video");
-		btnRegisterVideo.setBounds(100, 311, 120, 25);
-		getContentPane().add(btnRegisterVideo);
+		btnRegisterCientifico = new JButton();
+		btnRegisterCientifico.setText("Registrar Cientifico");
+		btnRegisterCientifico.setBounds(100, 311, 120, 25);
+		getContentPane().add(btnRegisterCientifico);
 
-		btnSearchVideo = new JButton();
-		btnSearchVideo.setText("Search Video");
-		btnSearchVideo.setBounds(240, 312, 120, 25);
-		getContentPane().add(btnSearchVideo);
+		btnSearchCientifico = new JButton();
+		btnSearchCientifico.setText("Buscar Cientifico");
+		btnSearchCientifico.setBounds(240, 312, 120, 25);
+		getContentPane().add(btnSearchCientifico);
 
 		lblTitle = new JLabel();
 		lblTitle.setText("MVC DESIGN PATRON");
@@ -59,7 +56,7 @@ public class MenuView extends JFrame implements ActionListener {
 		lblTitle.setFont(new java.awt.Font("Verdana", 1, 15));
 
 		lblSelection = new JLabel();
-		lblSelection.setText("CHOOSE AN OPTION");
+		lblSelection.setText("Selecciona una opción");
 		lblSelection.setBounds(171, 241, 250, 25);
 
 		textoIntroduccion = "This application shows a practical example of MVC design Patron.\n\n"
@@ -75,14 +72,14 @@ public class MenuView extends JFrame implements ActionListener {
 		areaIntroduction.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.LOWERED,
 				null, null, null, new java.awt.Color(0, 0, 0)));
 
-		btnRegisterClient.addActionListener(this);
-		btnSearchClient.addActionListener(this);
+		btnRegisterProyecto.addActionListener(this);
+		btnSearchProyecto.addActionListener(this);
 
-		btnRegisterVideo.addActionListener(this);
-		btnSearchVideo.addActionListener(this);
+		btnRegisterCientifico.addActionListener(this);
+		btnSearchCientifico.addActionListener(this);
 
-		getContentPane().add(btnSearchClient);
-		getContentPane().add(btnRegisterClient);
+		getContentPane().add(btnSearchProyecto);
+		getContentPane().add(btnRegisterProyecto);
 		getContentPane().add(lblSelection);
 		getContentPane().add(lblTitle);
 		getContentPane().add(areaIntroduction);
@@ -95,26 +92,26 @@ public class MenuView extends JFrame implements ActionListener {
 
 	}
 
-	public void setClientCoordinator(ClientController clientController) {
-		this.clientController = clientController;
+	public void setProyectoCoordinator(ProyectoController proyectoController) {
+		this.proyectoController = proyectoController;
 	}
 
-	public void setVideoCoordinator(VideoController videoController) {
-		this.videoController = videoController;
+	public void setCientificoCoordinator(CientificoController cientificoController) {
+		this.cientificoController = cientificoController;
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnRegisterClient) {
-			clientController.showRegisterClientView();
+		if (e.getSource() == btnRegisterProyecto) {
+			proyectoController.showRegisterProyectoView();
 		}
-		if (e.getSource() == btnSearchClient) {
-			clientController.showSearchClientView();
+		if (e.getSource() == btnSearchProyecto) {
+			proyectoController.showSearchProyectoView();
 		}
-		if (e.getSource() == btnRegisterVideo) {
-			videoController.showRegisterVideoView();
+		if (e.getSource() == btnRegisterCientifico) {
+			cientificoController.showRegisterCientificoView();
 		}
-		if (e.getSource() == btnSearchVideo) {
-			videoController.showSearchVideoView();
+		if (e.getSource() == btnSearchCientifico) {
+			cientificoController.showSearchCientificoView();
 		}
 	}
 }

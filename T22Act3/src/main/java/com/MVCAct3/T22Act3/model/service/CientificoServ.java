@@ -16,7 +16,7 @@ public class CientificoServ {
 
 	// Metodo de vinculación con el controller principal
 	public void setCientificoController(CientificoController cientificoController) {
-		this.setCientificoController(cientificoController);		
+		this.setController(cientificoController);		
 	}
 
 	// Metodo que valida los datos de Registro antes de pasar estos al DAO

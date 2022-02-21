@@ -7,11 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import com.MVCAct3.T22Act3.controller.ClientController;
 import com.MVCAct3.T22Act3.controller.ProyectoController;
-import com.MVCAct3.T22Act3.model.dto.Client;
 import com.MVCAct3.T22Act3.model.dto.Proyecto;
-import com.MVCAct3.T22Act3.model.service.ClientServ;
 import com.MVCAct3.T22Act3.model.service.ProyectoServ;
 
 public class SearchProyectoView extends JFrame implements ActionListener {
@@ -122,7 +119,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 				proyectoController.modificarProyecto(miProyecto);
 
 				if (ProyectoServ.modifyProyecto == true) {
-					habilita(true, true, true, true, true, true, false, false, true, false);
+					habilita(true, false, false, true, false, false, false);
 				}
 			} catch (Exception e2) {
 				JOptionPane.showMessageDialog(null, "Data insert Error", "Error", JOptionPane.ERROR_MESSAGE);
@@ -141,7 +138,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		}
 
 		if (e.getSource() == btnModify) {
-			habilita(true, true, true, true, true, true, false, true, true, true);
+			habilita(true, false, false, true, false, false, false);
 
 		}
 
@@ -175,7 +172,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		textNombre.setText(miProyecto.getNombre() + "");
 		textHoras.setText(miProyecto.getHoras() + "");
 
-		habilita(true, true, false, false, false, false, false, false, true, false);
+		habilita(true, false, false, true, false, false, false);
 	}
 
 	/**
@@ -186,30 +183,25 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		textNombre.setText("");
 		textHoras.setText("");
 
-		habilita(true, true, false, false, false, false, false, false, false, false);
+		habilita(true, false, false, true, false, false, false);
 	}
 
 	/**
 	 * Permite habilitar los componentes para establecer una modificacion
 	 * 
-	 * @param id
-	 * @param name
-	 * @param surname
-	 * @param address
-	 * @param dni
-	 * @param date
+	 * @oaram Id
+	 * @param NomApels
+	 * @param Horas
 	 * @param bSearch
 	 * @param bSave
 	 * @param bModify
 	 * @param bDelete
 	 */
-	public void habilita(boolean id, boolean bSearch, boolean name, boolean surname, boolean address, boolean dni,
-			boolean date, boolean bSave, boolean bModify, boolean bDelete) {
+	public void habilita(boolean id, boolean nombre, boolean horas, boolean bSearch, boolean bSave, boolean bModify, boolean bDelete) {
 		textId.setEditable(id);
-		textName.setEditable(name);
-		textSurname.setEditable(surname);
-		textAddress.setEditable(address);
-		textDni.setEditable(dni);
+		textNombre.setEditable(nombre);
+		textHoras.setEditable(horas);
+		
 		btnSearch.setEnabled(bSearch);
 		btnSave.setEnabled(bSave);
 		btnModify.setEnabled(bModify);

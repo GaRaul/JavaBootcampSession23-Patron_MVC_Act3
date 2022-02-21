@@ -15,7 +15,7 @@ public class ProyectoDao {
 
 		try {
 			Statement st = conex.getConnection().createStatement();
-			String sql = "INSERT INTO Client VALUES ('" + miProyecto.getId() + "','" + miProyecto.getNombre() + "', '" + miProyecto.getHoras() + "');";
+			String sql = "INSERT INTO Proyecto (Nombre, Horas) VALUES ('" + miProyecto.getNombre() + "', '" + miProyecto.getHoras() + "');";
 			st.executeUpdate(sql);
 			JOptionPane.showMessageDialog(null, "Proyecto añadido", "Información", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
@@ -39,7 +39,7 @@ public class ProyectoDao {
 			ResultSet res = consulta.executeQuery();
 			while (res.next()) {
 				existe = true;
-				proyecto.setId(res.getInt(id));
+//				proyecto.setId(res.getInt(id));
 				proyecto.setNombre(res.getString("Nombre"));
 				proyecto.setHoras(res.getString("Horas"));
 

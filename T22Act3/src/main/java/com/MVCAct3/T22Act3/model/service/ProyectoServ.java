@@ -17,7 +17,7 @@ public class ProyectoServ {
 
 	// Metodo de vinculación con el controller principal
 	public void setProyectoController(ProyectoController proyectoController) {
-		this.setProyectoController(proyectoController);		
+		this.setController(proyectoController);		
 	}
 
 	// Metodo que valida los datos de Registro antes de pasar estos al DAO

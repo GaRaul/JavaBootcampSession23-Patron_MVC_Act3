@@ -1,14 +1,15 @@
 package com.MVCAct3.T22Act3;
 
-import com.MVCAct3.T22Act3.controller.ClientController;
-import com.MVCAct3.T22Act3.controller.VideoController;
-import com.MVCAct3.T22Act3.model.service.ClientServ;
-import com.MVCAct3.T22Act3.model.service.VideoServ;
+import com.MVCAct3.T22Act3.controller.CientificoController;
+import com.MVCAct3.T22Act3.controller.ProyectoController;
+import com.MVCAct3.T22Act3.model.service.CientificoServ;
+import com.MVCAct3.T22Act3.model.service.ProyectoServ;
 import com.MVCAct3.T22Act3.view.*;
 import com.MVCAct3.T22Act3.view.cientifico.RegisterCientificoView;
 import com.MVCAct3.T22Act3.view.cientifico.SearchCientificoView;
-import com.MVCAct3.T22Act3.view.proyecto.RegisterClientView;
-import com.MVCAct3.T22Act3.view.proyecto.SearchClientView;
+import com.MVCAct3.T22Act3.view.proyecto.RegisterProyectoView;
+import com.MVCAct3.T22Act3.view.proyecto.SearchProyectoView;
+
 
 /**
  * Hello world!
@@ -16,15 +17,15 @@ import com.MVCAct3.T22Act3.view.proyecto.SearchClientView;
  */
 public class App 
 {
-	ClientServ myClientServ;
-	VideoServ myVideoServ;
+	ProyectoServ miProyectoServ;
+	CientificoServ miCientificoServ;
 	MenuView myMenuView;
-	SearchClientView mySearchClientView;
-	RegisterClientView myRegisterClientView;
-	SearchCientificoView mySearchVideoView;
-	RegisterCientificoView myRegisterVideoView;
-	ClientController clientController;
-	VideoController videoController;
+	SearchProyectoView mySearchProyectoView;
+	RegisterProyectoView myRegisterProyectoView;
+	SearchCientificoView mySearchCientificoView;
+	RegisterCientificoView myRegisterCientificoView;
+	ProyectoController proyectoController;
+	CientificoController cientificoController;
 
 	/**
 	 * @param args
@@ -42,38 +43,38 @@ public class App
 		/*Se instancian las clases*/
 		myMenuView=new MenuView();
 		
-		myRegisterClientView=new RegisterClientView();
-		mySearchClientView= new SearchClientView();
-		myClientServ=new ClientServ();
-		clientController= new ClientController();
+		myRegisterProyectoView=new RegisterProyectoView();
+		mySearchProyectoView= new SearchProyectoView();
+		miProyectoServ=new ProyectoServ();
+		proyectoController= new ProyectoController();
 		
-		myRegisterVideoView=new RegisterCientificoView();
-		mySearchVideoView= new SearchCientificoView();
-		myVideoServ=new VideoServ();
-		videoController= new VideoController();
+		myRegisterCientificoView=new RegisterCientificoView();
+		mySearchCientificoView= new SearchCientificoView();
+		miCientificoServ=new CientificoServ();
+		cientificoController= new CientificoController();
 		
 		/*Se establecen las relaciones entre clases*/
-		myMenuView.setClientCoordinator(clientController);
-		myMenuView.setVideoCoordinator(videoController);
+		myMenuView.setProyectoCoordinator(proyectoController);
+		myMenuView.setCientificoCoordinator(cientificoController);
 		
-		myRegisterClientView.setCoordinator(clientController);
-		mySearchClientView.setCoordinador(clientController);
-		myClientServ.setProyectoController(clientController);
+		myRegisterProyectoView.setCoordinator(proyectoController);
+		mySearchProyectoView.setCoordinador(proyectoController);
+		miProyectoServ.setProyectoController(proyectoController);
 		
-		myRegisterVideoView.setCoordinator(videoController);
-		mySearchVideoView.setCoordinador(videoController);
-		myVideoServ.setVideoController(videoController);
+		myRegisterCientificoView.setCoordinator(cientificoController);
+		mySearchCientificoView.setCoordinador(cientificoController);
+		miCientificoServ.setCientificoController(cientificoController);
 		
 		/*Se establecen relaciones con la clase coordinador*/
-		clientController.setMyMenuView(myMenuView);
-		clientController.setMyRegisterClientView(myRegisterClientView);
-		clientController.setMySearchClientView(mySearchClientView);
-		clientController.setClientServ(myClientServ);
+		proyectoController.setMyMenuView(myMenuView);
+		proyectoController.setMyRegisterProyectoView(myRegisterProyectoView);
+		proyectoController.setMySearchProyectoView(mySearchProyectoView);
+		proyectoController.setProyectoServ(miProyectoServ);
 		
-		videoController.setMyMenuView(myMenuView);
-		videoController.setMyRegisterVideoView(myRegisterVideoView);
-		videoController.setMySearchVideoView(mySearchVideoView);
-		videoController.setVideoServ(myVideoServ);
+		cientificoController.setMyMenuView(myMenuView);
+		cientificoController.setMyRegisterCientificoView(myRegisterCientificoView);
+		cientificoController.setMySearchCientificoView(mySearchCientificoView);
+		cientificoController.setCientificoServ(miCientificoServ);
 				
 		myMenuView.setVisible(true);
 	}

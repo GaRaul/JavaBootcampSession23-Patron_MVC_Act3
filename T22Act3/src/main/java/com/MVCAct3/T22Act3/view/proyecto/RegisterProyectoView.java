@@ -38,6 +38,7 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 		lblTitle.setFont(new java.awt.Font("Verdana", 1, 18));
 
 		lblId = new JLabel();
+		lblId.setEnabled(false);
 		lblId.setText("Id");
 		lblId.setBounds(20, 120, 80, 25);
 		getContentPane().add(lblId);
@@ -53,6 +54,8 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 		getContentPane().add(lblHoras);
 
 		textId = new JTextField();
+		textId.setEnabled(false);
+		textId.setEditable(false);
 		textId.setBounds(80, 120, 125, 25);
 		getContentPane().add(textId);
 
@@ -94,7 +97,7 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 		if (e.getSource() == btnSave) {
 			try {
 				Proyecto miProyecto = new Proyecto();
-				miProyecto.setId(Integer.parseInt(textId.getText()));
+//				miProyecto.setId(Integer.parseInt(textId.getText()));
 				miProyecto.setNombre(textNombre.getText());
 				miProyecto.setHoras(textHoras.getText());
 

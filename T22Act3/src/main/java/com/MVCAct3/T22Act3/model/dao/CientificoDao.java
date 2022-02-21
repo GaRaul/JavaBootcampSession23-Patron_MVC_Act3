@@ -16,7 +16,7 @@ public class CientificoDao {
 
 		try {
 			Statement st = conex.getConnection().createStatement();
-			String sql = "INSERT INTO Client VALUES ('" + miCientifico.getDNI() + "','" + miCientifico.getNomApels() + "');";
+			String sql = "INSERT INTO Cientifico VALUES ('" + miCientifico.getDNI() + "','" + miCientifico.getNomApels() + "');";
 			st.executeUpdate(sql);
 			JOptionPane.showMessageDialog(null, "Client added", "Information", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
