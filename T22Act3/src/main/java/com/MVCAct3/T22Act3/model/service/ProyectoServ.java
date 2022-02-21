@@ -1,23 +1,19 @@
 package com.MVCAct3.T22Act3.model.service;
 
 import javax.swing.JOptionPane;
-
-
 import com.MVCAct3.T22Act3.controller.ProyectoController;
-
 import com.MVCAct3.T22Act3.model.dao.ProyectoDao;
-
 import com.MVCAct3.T22Act3.model.dto.Proyecto;
 
 public class ProyectoServ {
-	
+
 	private ProyectoController proyectoController;
-	public static boolean consultProyecto = false;
-	public static boolean modifyProyecto = false;
+	public static boolean consultarProyecto = false;
+	public static boolean modificarProyecto = false;
 
 	// Metodo de vinculación con el controller principal
 	public void setProyectoController(ProyectoController proyectoController) {
-		this.setController(proyectoController);		
+		this.setController(proyectoController);
 	}
 
 	// Metodo que valida los datos de Registro antes de pasar estos al DAO
@@ -27,7 +23,7 @@ public class ProyectoServ {
 			miProyectoDao = new ProyectoDao();
 			miProyectoDao.registrarProyecto(miProyecto);
 		} else {
-			JOptionPane.showMessageDialog(null, "The name must have more than 3 characters", "Warning",
+			JOptionPane.showMessageDialog(null, "El nombre del proyecto ha de tener más de 3 caracteres", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
@@ -37,23 +33,24 @@ public class ProyectoServ {
 		ProyectoDao miProyectoDao;
 
 		try {
-			int id = Integer.parseInt(idProyecto);//mirar
+			int id = Integer.parseInt(idProyecto);// mirar
 			if (id >= 0 || id <= 200) {
 				miProyectoDao = new ProyectoDao();
-				consultProyecto = true;
+				consultarProyecto = true;
 				return miProyectoDao.buscarProyecto(id);
 			} else {
-				JOptionPane.showMessageDialog(null, "The client's id must be between 1-200",
-						"Warning", JOptionPane.WARNING_MESSAGE);
-				consultProyecto = false;
+				JOptionPane.showMessageDialog(null, "El id del cliente debe estar entre 1 y 200", "Warning",
+						JOptionPane.WARNING_MESSAGE);
+				consultarProyecto = false;
 			}
 
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Must introduce numerical data", "Error", JOptionPane.ERROR_MESSAGE);
-			consultProyecto = false;
+			JOptionPane.showMessageDialog(null, "Debe introducir un valor numérico", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			consultarProyecto = false;
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "There is an Error", "Error", JOptionPane.ERROR_MESSAGE);
-			consultProyecto = false;
+			JOptionPane.showMessageDialog(null, "Se ha producido un error", "Error", JOptionPane.ERROR_MESSAGE);
+			consultarProyecto = false;
 		}
 
 		return null;
@@ -65,11 +62,11 @@ public class ProyectoServ {
 		if (miProyecto.getNombre().length() > 1) {
 			miProyectoDao = new ProyectoDao();
 			miProyectoDao.modificarProyecto(miProyecto);
-			modifyProyecto = true;
+			modificarProyecto = true;
 		} else {
-			JOptionPane.showMessageDialog(null, "The project's name must have more than 1 characters", "Warning",
+			JOptionPane.showMessageDialog(null, "El nombre del proyecto ha de tener más de 1 caracter", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
-			modifyProyecto = false;
+			modificarProyecto = false;
 		}
 	}
 

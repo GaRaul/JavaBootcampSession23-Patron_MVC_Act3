@@ -8,7 +8,6 @@ import javax.swing.JOptionPane;
 import com.MVCAct3.T22Act3.model.connection.MysqlConnection;
 import com.MVCAct3.T22Act3.model.dto.Cientifico;
 
-
 public class CientificoDao {
 
 	public void registrarCientifico(Cientifico miCientifico) {
@@ -16,16 +15,17 @@ public class CientificoDao {
 
 		try {
 			Statement st = conex.getConnection().createStatement();
-			String sql = "INSERT INTO Cientifico VALUES ('" + miCientifico.getDNI() + "','" + miCientifico.getNomApels() + "');";
+			String sql = "INSERT INTO Cientifico VALUES ('" + miCientifico.getDNI() + "','" + miCientifico.getNomApels()
+					+ "');";
 			st.executeUpdate(sql);
-			JOptionPane.showMessageDialog(null, "Client added", "Information", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Cientifico añadido", "Información", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
 			st.close();
 			conex.desconectar();
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Failed insertion");
+			JOptionPane.showMessageDialog(null, "La inserción ha fallado");
 		}
 	}
 
@@ -49,7 +49,7 @@ public class CientificoDao {
 			System.out.println(sql);
 
 		} catch (SQLException e) {
-			JOptionPane.showMessageDialog(null, "Connection Error");
+			JOptionPane.showMessageDialog(null, "Error de conexión");
 			System.out.println(e);
 		}
 
@@ -72,13 +72,14 @@ public class CientificoDao {
 
 			estatuto.executeUpdate();
 
-			JOptionPane.showMessageDialog(null, " Modification Done", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Modificación realizada", "Confirmación",
+					JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(consulta);
 
 		} catch (SQLException e) {
 
 			System.out.println(e);
-			JOptionPane.showMessageDialog(null, "Modification Error", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error al modificar los datos", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -88,14 +89,15 @@ public class CientificoDao {
 			String sql = "DELETE FROM Cientifico WHERE DNI='" + DNI + "'";
 			Statement st = conex.getConnection().createStatement();
 			st.executeUpdate(sql);
-			JOptionPane.showMessageDialog(null, " Delete Done", "Information", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Eliminado correctamente", "Información",
+					JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
 			st.close();
 			conex.desconectar();
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Delete Error");
+			JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
 		}
 	}
 }

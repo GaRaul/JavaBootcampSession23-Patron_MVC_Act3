@@ -6,17 +6,15 @@ import com.MVCAct3.T22Act3.controller.CientificoController;
 import com.MVCAct3.T22Act3.model.dao.CientificoDao;
 import com.MVCAct3.T22Act3.model.dto.Cientifico;
 
-
-
 public class CientificoServ {
-	
+
 	private CientificoController cientificoController;
-	public static boolean consultCientifico = false;
-	public static boolean modifyCientifico = false;
+	public static boolean consultarCientifico = false;
+	public static boolean modificarCientifico = false;
 
 	// Metodo de vinculación con el controller principal
 	public void setCientificoController(CientificoController cientificoController) {
-		this.setController(cientificoController);		
+		this.setController(cientificoController);
 	}
 
 	// Metodo que valida los datos de Registro antes de pasar estos al DAO
@@ -26,7 +24,7 @@ public class CientificoServ {
 			miCientificoDao = new CientificoDao();
 			miCientificoDao.registrarCientifico(miCientifico);
 		} else {
-			JOptionPane.showMessageDialog(null, "The document must have more than 3 digits", "Warning",
+			JOptionPane.showMessageDialog(null, "El documento ha de tener más de 3 caracteres", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
 		}
 	}
@@ -36,23 +34,24 @@ public class CientificoServ {
 		CientificoDao miCientificoDao;
 
 		try {
-			int id = Integer.parseInt(DNICientifico);//mirar
+			int id = Integer.parseInt(DNICientifico);// mirar
 			if (id / 10000000 > 1 && id / 10000000 < 10) {
 				miCientificoDao = new CientificoDao();
-				consultCientifico = true;
+				consultarCientifico = true;
 				return miCientificoDao.buscarCientifico(id);
 			} else {
-				JOptionPane.showMessageDialog(null, "The cientifico's DNI must have 8 numerical characters",
+				JOptionPane.showMessageDialog(null, "El DNI del cientifico ha de tener 8 caracteres numéricos",
 						"Warning", JOptionPane.WARNING_MESSAGE);
-				consultCientifico = false;
+				consultarCientifico = false;
 			}
 
 		} catch (NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "Must introduce numerical data", "Error", JOptionPane.ERROR_MESSAGE);
-			consultCientifico = false;
+			JOptionPane.showMessageDialog(null, "Debe introducir un valor numérico", "Error",
+					JOptionPane.ERROR_MESSAGE);
+			consultarCientifico = false;
 		} catch (Exception e) {
-			JOptionPane.showMessageDialog(null, "There is an Error", "Error", JOptionPane.ERROR_MESSAGE);
-			consultCientifico = false;
+			JOptionPane.showMessageDialog(null, "Se ha producido un error", "Error", JOptionPane.ERROR_MESSAGE);
+			consultarCientifico = false;
 		}
 
 		return null;
@@ -64,11 +63,11 @@ public class CientificoServ {
 		if (miCientifico.getNomApels().length() > 1) {
 			miCientificoDao = new CientificoDao();
 			miCientificoDao.modificarCientifico(miCientifico);
-			modifyCientifico = true;
+			modificarCientifico = true;
 		} else {
-			JOptionPane.showMessageDialog(null, "The cientifico's name must have more than 1 character", "Warning",
+			JOptionPane.showMessageDialog(null, "El nombre del cientifico debe tener más de un caracter", "Advertencia",
 					JOptionPane.WARNING_MESSAGE);
-			modifyCientifico = false;
+			modificarCientifico = false;
 		}
 	}
 

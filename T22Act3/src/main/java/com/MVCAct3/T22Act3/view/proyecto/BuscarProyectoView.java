@@ -11,43 +11,44 @@ import com.MVCAct3.T22Act3.controller.ProyectoController;
 import com.MVCAct3.T22Act3.model.dto.Proyecto;
 import com.MVCAct3.T22Act3.model.service.ProyectoServ;
 
-public class SearchProyectoView extends JFrame implements ActionListener {
+public class BuscarProyectoView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private ProyectoController proyectoController; // objeto personaController que permite la relacion entre esta clase y la
-												// clase personaController
+	private ProyectoController proyectoController; // objeto personaController que permite la relacion entre esta clase
+													// y la
+													// clase personaController
 	private JLabel lblTitle;
 	private JTextField textId, textNombre, textHoras;
 	private JLabel lblId, lblNombre, lblHoras;
-	private JButton btnSave, btnCancel, btnSearch, btnModify, btnDelete;
+	private JButton btnRegistrar, btnCancelar, btnBuscar, btnModificar, btnBorrar;
 
 	/**
 	 * constructor de la clase donde se inicializan todos los componentes de la
 	 * ventana de busqueda
 	 */
-	public SearchProyectoView() {
+	public BuscarProyectoView() {
 
-		btnSave = new JButton();
-		btnSave.setBounds(32, 220, 120, 25);
-		btnSave.setText("Registrar");
-		btnSave.setEnabled(false);
+		btnRegistrar = new JButton();
+		btnRegistrar.setBounds(32, 220, 120, 25);
+		btnRegistrar.setText("Registrar");
+		btnRegistrar.setEnabled(false);
 
-		btnCancel = new JButton();
-		btnCancel.setBounds(170, 245, 120, 25);
-		btnCancel.setText("Cancelar");
+		btnCancelar = new JButton();
+		btnCancelar.setBounds(170, 245, 120, 25);
+		btnCancelar.setText("Cancelar");
 
-		btnSearch = new JButton();
-		btnSearch.setBounds(168, 80, 100, 25);
-		btnSearch.setText("Buscar");
+		btnBuscar = new JButton();
+		btnBuscar.setBounds(168, 80, 100, 25);
+		btnBuscar.setText("Buscar");
 
-		btnDelete = new JButton();
-		btnDelete.setBounds(300, 220, 120, 25);
-		btnDelete.setText("Borrar");
-		btnDelete.setEnabled(false);
+		btnBorrar = new JButton();
+		btnBorrar.setBounds(300, 220, 120, 25);
+		btnBorrar.setText("Borrar");
+		btnBorrar.setEnabled(false);
 
-		btnModify = new JButton();
-		btnModify.setBounds(170, 220, 120, 25);
-		btnModify.setText("Modificar");
+		btnModificar = new JButton();
+		btnModificar.setBounds(170, 220, 120, 25);
+		btnModificar.setText("Modificar");
 
 		lblTitle = new JLabel();
 		lblTitle.setText("BUSCAR PROYECTOS");
@@ -65,7 +66,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		getContentPane().add(lblNombre);
 
 		lblHoras = new JLabel();
-		lblHoras.setText("Surname");
+		lblHoras.setText("Horas");
 		lblHoras.setBounds(20, 156, 80, 25);
 		getContentPane().add(lblHoras);
 
@@ -82,17 +83,17 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		textHoras.setEditable(false);
 		getContentPane().add(textHoras);
 
-		btnModify.addActionListener(this);
-		btnDelete.addActionListener(this);
-		btnSearch.addActionListener(this);
-		btnSave.addActionListener(this);
-		btnCancel.addActionListener(this);
+		btnModificar.addActionListener(this);
+		btnBorrar.addActionListener(this);
+		btnBuscar.addActionListener(this);
+		btnRegistrar.addActionListener(this);
+		btnCancelar.addActionListener(this);
 
-		getContentPane().add(btnCancel);
-		getContentPane().add(btnSearch);
-		getContentPane().add(btnModify);
-		getContentPane().add(btnDelete);
-		getContentPane().add(btnSave);
+		getContentPane().add(btnCancelar);
+		getContentPane().add(btnBuscar);
+		getContentPane().add(btnModificar);
+		getContentPane().add(btnBorrar);
+		getContentPane().add(btnRegistrar);
 		getContentPane().add(lblTitle);
 		limpiar();
 
@@ -109,7 +110,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == btnSave) {
+		if (e.getSource() == btnRegistrar) {
 			try {
 				Proyecto miProyecto = new Proyecto();
 				miProyecto.setId(Integer.parseInt(textId.getText()));
@@ -118,45 +119,45 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 
 				proyectoController.modificarProyecto(miProyecto);
 
-				if (ProyectoServ.modifyProyecto == true) {
+				if (ProyectoServ.modificarProyecto == true) {
 					habilita(true, false, false, true, false, false, false);
 				}
 			} catch (Exception e2) {
-				JOptionPane.showMessageDialog(null, "Data insert Error", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Error al insertar los datos", "Error", JOptionPane.ERROR_MESSAGE);
 			}
 
 		}
 
-		if (e.getSource() == btnSearch) {
+		if (e.getSource() == btnBuscar) {
 			Proyecto miProyecto = proyectoController.buscarProyecto(textId.getText());
 
 			if (miProyecto != null) {
 				mostrarProyecto(miProyecto);
-			} else if (ProyectoServ.consultProyecto == true) {
-				JOptionPane.showMessageDialog(null, "Proyecto doesn't exist", "Warning", JOptionPane.WARNING_MESSAGE);
+			} else if (ProyectoServ.consultarProyecto == true) {
+				JOptionPane.showMessageDialog(null, "No existe proyecto con ese Id", "Advertencia",
+						JOptionPane.WARNING_MESSAGE);
 			}
 		}
 
-		if (e.getSource() == btnModify) {
+		if (e.getSource() == btnModificar) {
 			habilita(true, true, true, true, true, true, true);
 
 		}
 
-		if (e.getSource() == btnDelete) {
+		if (e.getSource() == btnBorrar) {
 			if (!textId.getText().equals("")) {
-				int respuesta = JOptionPane.showConfirmDialog(this, "Are you sure to delete a proyecto?", "Confirmation",
+				int respuesta = JOptionPane.showConfirmDialog(this, "¿Desea eliminar el proyecto?", "Confirmation",
 						JOptionPane.YES_NO_OPTION);
 				if (respuesta == JOptionPane.YES_NO_OPTION) {
 					proyectoController.borrarProyecto(textId.getText());
 					limpiar();
 				}
 			} else {
-				JOptionPane.showMessageDialog(null, "Insert document number", "Information",
-						JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Inserte Id", "Informacion", JOptionPane.WARNING_MESSAGE);
 			}
 
 		}
-		if (e.getSource() == btnCancel) {
+		if (e.getSource() == btnCancelar) {
 			this.dispose();
 		}
 
@@ -168,7 +169,6 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 	 * @param miProyecto
 	 */
 	private void mostrarProyecto(Proyecto miProyecto) {
-//		textId.setText(String.valueOf(miProyecto.getId()));
 		textNombre.setText(miProyecto.getNombre() + "");
 		textHoras.setText(miProyecto.getHoras() + "");
 
@@ -192,20 +192,21 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 	 * @oaram Id
 	 * @param NomApels
 	 * @param Horas
-	 * @param bSearch
-	 * @param bSave
-	 * @param bModify
-	 * @param bDelete
+	 * @param bBuscar
+	 * @param bRegistrar
+	 * @param bModificar
+	 * @param bBorrar
 	 */
-	public void habilita(boolean id, boolean nombre, boolean horas, boolean bSearch, boolean bSave, boolean bModify, boolean bDelete) {
+	public void habilita(boolean id, boolean nombre, boolean horas, boolean bBuscar, boolean bRegistrar,
+			boolean bModificar, boolean bBorrar) {
 		textId.setEditable(id);
 		textNombre.setEditable(nombre);
 		textHoras.setEditable(horas);
-		
-		btnSearch.setEnabled(bSearch);
-		btnSave.setEnabled(bSave);
-		btnModify.setEnabled(bModify);
-		btnDelete.setEnabled(bDelete);
+
+		btnBuscar.setEnabled(bBuscar);
+		btnRegistrar.setEnabled(bRegistrar);
+		btnModificar.setEnabled(bModificar);
+		btnBorrar.setEnabled(bBorrar);
 	}
 
 }

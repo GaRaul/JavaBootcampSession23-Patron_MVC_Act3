@@ -10,12 +10,12 @@ import javax.swing.JTextField;
 import com.MVCAct3.T22Act3.controller.CientificoController;
 import com.MVCAct3.T22Act3.model.dto.Cientifico;
 
-
-public class RegisterCientificoView extends JFrame implements ActionListener {
+public class RegistrarCientificoView extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private CientificoController cientificoController; // objeto personaController que permite la relacion entre esta clase y la
-												// clase PersonaController
+	private CientificoController cientificoController; // objeto personaController que permite la relacion entre esta
+														// clase y la
+	// clase PersonaController
 	private JLabel lblWindowTitle;
 	private JTextField textDNI, textNomApels;
 
@@ -26,7 +26,7 @@ public class RegisterCientificoView extends JFrame implements ActionListener {
 	 * constructor de la clase donde se inicializan todos los componentes de la
 	 * ventana de registro
 	 */
-	public RegisterCientificoView() {
+	public RegistrarCientificoView() {
 
 		btnSave = new JButton();
 		btnSave.setBounds(80, 177, 120, 25);
@@ -91,7 +91,7 @@ public class RegisterCientificoView extends JFrame implements ActionListener {
 
 				cientificoController.añadirCientifico(miCientifico);
 			} catch (Exception ex) {
-				JOptionPane.showMessageDialog(null, "Insert data Error", "Error", JOptionPane.ERROR_MESSAGE);
+				JOptionPane.showMessageDialog(null, "Error al insertar los datos", "Error", JOptionPane.ERROR_MESSAGE);
 				System.out.println(ex);
 			}
 		}

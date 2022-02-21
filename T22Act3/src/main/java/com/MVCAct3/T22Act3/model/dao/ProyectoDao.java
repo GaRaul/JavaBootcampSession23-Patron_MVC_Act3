@@ -15,7 +15,8 @@ public class ProyectoDao {
 
 		try {
 			Statement st = conex.getConnection().createStatement();
-			String sql = "INSERT INTO Proyecto (Nombre, Horas) VALUES ('" + miProyecto.getNombre() + "', '" + miProyecto.getHoras() + "');";
+			String sql = "INSERT INTO Proyecto (Nombre, Horas) VALUES ('" + miProyecto.getNombre() + "', '"
+					+ miProyecto.getHoras() + "');";
 			st.executeUpdate(sql);
 			JOptionPane.showMessageDialog(null, "Proyecto añadido", "Información", JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
@@ -24,7 +25,7 @@ public class ProyectoDao {
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Inserción fallida");
+			JOptionPane.showMessageDialog(null, "La inserción ha fallado");
 		}
 	}
 
@@ -39,7 +40,6 @@ public class ProyectoDao {
 			ResultSet res = consulta.executeQuery();
 			while (res.next()) {
 				existe = true;
-//				proyecto.setId(res.getInt(id));
 				proyecto.setNombre(res.getString("Nombre"));
 				proyecto.setHoras(res.getString("Horas"));
 
@@ -72,13 +72,14 @@ public class ProyectoDao {
 			estatuto.setInt(4, miProyecto.getId());
 			estatuto.executeUpdate();
 
-			JOptionPane.showMessageDialog(null, " Modification Done", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Modificación realizada", "Confirmación",
+					JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(consulta);
 
 		} catch (SQLException e) {
 
 			System.out.println(e);
-			JOptionPane.showMessageDialog(null, "Modification Error", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Error al modificar los datos", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 	}
 
@@ -88,14 +89,15 @@ public class ProyectoDao {
 			String sql = "DELETE FROM Proyecto WHERE id='" + id + "'";
 			Statement st = conex.getConnection().createStatement();
 			st.executeUpdate(sql);
-			JOptionPane.showMessageDialog(null, " Delete Done", "Information", JOptionPane.INFORMATION_MESSAGE);
+			JOptionPane.showMessageDialog(null, "Eliminado correctamente", "Información",
+					JOptionPane.INFORMATION_MESSAGE);
 			System.out.println(sql);
 			st.close();
 			conex.desconectar();
 
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
-			JOptionPane.showMessageDialog(null, "Delete Error");
+			JOptionPane.showMessageDialog(null, "Error al eliminar los datos");
 		}
 	}
 }
