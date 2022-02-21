@@ -68,6 +68,7 @@ public class CientificoDao {
 
 			estatuto.setString(1, miCientifico.getDNI());
 			estatuto.setString(2, miCientifico.getNomApels());
+			estatuto.setString(3, miCientifico.getDNI());
 
 			estatuto.executeUpdate();
 

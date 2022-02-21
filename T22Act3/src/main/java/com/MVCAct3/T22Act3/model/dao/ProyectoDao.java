@@ -69,6 +69,7 @@ public class ProyectoDao {
 			estatuto.setInt(1, miProyecto.getId());
 			estatuto.setString(2, miProyecto.getNombre());
 			estatuto.setString(3, miProyecto.getHoras());
+			estatuto.setInt(4, miProyecto.getId());
 			estatuto.executeUpdate();
 
 			JOptionPane.showMessageDialog(null, " Modification Done", "Confirmation", JOptionPane.INFORMATION_MESSAGE);

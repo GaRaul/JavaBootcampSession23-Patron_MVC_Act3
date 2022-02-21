@@ -29,34 +29,34 @@ public class RegisterCientificoView extends JFrame implements ActionListener {
 	public RegisterCientificoView() {
 
 		btnSave = new JButton();
-		btnSave.setBounds(109, 242, 120, 25);
+		btnSave.setBounds(80, 177, 120, 25);
 		btnSave.setText("Registrar");
 
 		btnCancel = new JButton();
-		btnCancel.setBounds(250, 242, 120, 25);
+		btnCancel.setBounds(220, 177, 120, 25);
 		btnCancel.setText("Cancelar");
 
 		lblWindowTitle = new JLabel();
 		lblWindowTitle.setText("NUEVO CIENTIFICO");
-		lblWindowTitle.setBounds(173, 21, 380, 30);
+		lblWindowTitle.setBounds(118, 40, 234, 30);
 		lblWindowTitle.setFont(new java.awt.Font("Verdana", 1, 18));
 
 		lblDNI = new JLabel();
 		lblDNI.setText("DNI");
-		lblDNI.setBounds(20, 120, 80, 25);
+		lblDNI.setBounds(20, 95, 80, 25);
 		getContentPane().add(lblDNI);
 
 		lblNomApels = new JLabel();
 		lblNomApels.setText("NomApels");
-		lblNomApels.setBounds(230, 120, 80, 25);
+		lblNomApels.setBounds(20, 131, 80, 25);
 		getContentPane().add(lblNomApels);
 
 		textDNI = new JTextField();
-		textDNI.setBounds(80, 120, 125, 25);
+		textDNI.setBounds(80, 95, 290, 25);
 		getContentPane().add(textDNI);
 
 		textNomApels = new JTextField();
-		textNomApels.setBounds(295, 120, 125, 25);
+		textNomApels.setBounds(80, 131, 290, 25);
 		getContentPane().add(textNomApels);
 
 		btnSave.addActionListener(this);
@@ -65,7 +65,7 @@ public class RegisterCientificoView extends JFrame implements ActionListener {
 		getContentPane().add(btnSave);
 		getContentPane().add(lblWindowTitle);
 		limpiar();
-		setSize(480, 325);
+		setSize(458, 264);
 		setTitle("Registrar Cientifico");
 		setLocationRelativeTo(null);
 		setResizable(false);

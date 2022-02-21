@@ -13,9 +13,9 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 	private ProyectoController proyectoController; // objeto personaController que permite la relacion entre esta clase y la
 												// clase PersonaController
 	private JLabel lblTitle;
-	private JTextField textId, textNombre, textHoras;
+	private JTextField textNombre, textHoras;
 
-	private JLabel lblId, lblNombre, lblHoras;
+	private JLabel lblNombre, lblHoras;
 	private JButton btnSave, btnCancel;
 
 	/**
@@ -25,46 +25,34 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 	public RegisterProyectoView() {
 
 		btnSave = new JButton();
-		btnSave.setBounds(109, 242, 120, 25);
+		btnSave.setBounds(98, 195, 120, 25);
 		btnSave.setText("Registrar");
 
 		btnCancel = new JButton();
-		btnCancel.setBounds(250, 242, 120, 25);
+		btnCancel.setBounds(242, 195, 120, 25);
 		btnCancel.setText("Cancelar");
 
 		lblTitle = new JLabel();
-		lblTitle.setText("NEW CLIENT");
-		lblTitle.setBounds(173, 21, 380, 30);
+		lblTitle.setText("NUEVO PROYECTO");
+		lblTitle.setBounds(135, 45, 196, 30);
 		lblTitle.setFont(new java.awt.Font("Verdana", 1, 18));
-
-		lblId = new JLabel();
-		lblId.setEnabled(false);
-		lblId.setText("Id");
-		lblId.setBounds(20, 120, 80, 25);
-		getContentPane().add(lblId);
 
 		lblNombre = new JLabel();
 		lblNombre.setText("Nombre");
-		lblNombre.setBounds(230, 120, 80, 25);
+		lblNombre.setBounds(20, 103, 80, 25);
 		getContentPane().add(lblNombre);
 		
 		lblHoras = new JLabel();
 		lblHoras.setText("Horas");
-		lblHoras.setBounds(20, 160, 80, 25);
+		lblHoras.setBounds(20, 139, 80, 25);
 		getContentPane().add(lblHoras);
 
-		textId = new JTextField();
-		textId.setEnabled(false);
-		textId.setEditable(false);
-		textId.setBounds(80, 120, 125, 25);
-		getContentPane().add(textId);
-
 		textHoras = new JTextField();
-		textHoras.setBounds(80, 156, 340, 25);
+		textHoras.setBounds(80, 139, 340, 25);
 		getContentPane().add(textHoras);
 
 		textNombre = new JTextField();
-		textNombre.setBounds(295, 120, 125, 25);
+		textNombre.setBounds(80, 103, 340, 25);
 		getContentPane().add(textNombre);
 
 		btnSave.addActionListener(this);
@@ -73,8 +61,8 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 		getContentPane().add(btnSave);
 		getContentPane().add(lblTitle);
 		limpiar();
-		setSize(480, 325);
-		setTitle("Register Client");
+		setSize(480, 302);
+		setTitle("Registrar Proyecto");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -82,8 +70,6 @@ public class RegisterProyectoView extends JFrame implements ActionListener {
 	}
 
 	private void limpiar() {
-
-		textId.setText("");
 		textNombre.setText("");
 		textHoras.setText("");
 

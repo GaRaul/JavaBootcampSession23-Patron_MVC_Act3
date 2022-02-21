@@ -31,48 +31,48 @@ public class SearchCientificoView extends JFrame implements ActionListener {
 	public SearchCientificoView() {
 
 		btnSave = new JButton();
-		btnSave.setBounds(32, 220, 120, 25);
+		btnSave.setBounds(40, 177, 120, 25);
 		btnSave.setText("Registrar");
 		btnSave.setEnabled(false);
 
 		btnCancel = new JButton();
-		btnCancel.setBounds(170, 245, 120, 25);
+		btnCancel.setBounds(170, 213, 120, 25);
 		btnCancel.setText("Cancelar");
 
 		btnSearch = new JButton();
-		btnSearch.setBounds(151, 80, 100, 25);
+		btnSearch.setBounds(211, 80, 100, 25);
 		btnSearch.setText("Buscar");
 
 		btnDelete = new JButton();
-		btnDelete.setBounds(300, 220, 120, 25);
+		btnDelete.setBounds(300, 177, 120, 25);
 		btnDelete.setText("Borrar");
 		btnDelete.setEnabled(false);
 
 		btnModify = new JButton();
-		btnModify.setBounds(170, 220, 120, 25);
+		btnModify.setBounds(170, 177, 120, 25);
 		btnModify.setText("Modificar");
 
 		lblWindowTitle = new JLabel();
-		lblWindowTitle.setText("ADMINISTRAR CIENTIFICOS");
-		lblWindowTitle.setBounds(137, 27, 380, 30);
+		lblWindowTitle.setText("BUSCAR CIENTIFICOS");
+		lblWindowTitle.setBounds(126, 39, 245, 30);
 		lblWindowTitle.setFont(new java.awt.Font("Verdana", 1, 18));
 
 		lblDNI = new JLabel();
-		lblDNI.setText("Id");
+		lblDNI.setText("DNI");
 		lblDNI.setBounds(20, 80, 80, 25);
 		getContentPane().add(lblDNI);
 
 		lblNomApels = new JLabel();
-		lblNomApels.setText("Title");
+		lblNomApels.setText("NomApels");
 		lblNomApels.setBounds(20, 120, 80, 25);
 		getContentPane().add(lblNomApels);
 
 		textDNI = new JTextField();
-		textDNI.setBounds(61, 80, 80, 25);
+		textDNI.setBounds(82, 80, 119, 25);
 		getContentPane().add(textDNI);
 
 		textNomApels = new JTextField();
-		textNomApels.setBounds(61, 120, 155, 25);
+		textNomApels.setBounds(81, 120, 339, 25);
 		getContentPane().add(textNomApels);
 
 		btnModify.addActionListener(this);
@@ -130,7 +130,7 @@ public class SearchCientificoView extends JFrame implements ActionListener {
 		}
 
 		if (e.getSource() == btnModify) {
-			habilita(true, false, true, false, false, false);
+			habilita(true, true, true, true, true, true);
 
 		}
 
@@ -162,7 +162,7 @@ public class SearchCientificoView extends JFrame implements ActionListener {
 		textDNI.setText(miCientifico.getDNI());
 		textNomApels.setText(miCientifico.getNomApels() + "");
 
-		habilita(true, false, true, false, false, false);
+		habilita(true, false, true, false, true, false);
 	}
 
 	/**

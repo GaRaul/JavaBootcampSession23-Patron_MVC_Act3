@@ -37,7 +37,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		btnCancel.setText("Cancelar");
 
 		btnSearch = new JButton();
-		btnSearch.setBounds(151, 80, 100, 25);
+		btnSearch.setBounds(168, 80, 100, 25);
 		btnSearch.setText("Buscar");
 
 		btnDelete = new JButton();
@@ -50,8 +50,8 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		btnModify.setText("Modificar");
 
 		lblTitle = new JLabel();
-		lblTitle.setText("ADMINISTRAR PROYECTOS");
-		lblTitle.setBounds(137, 27, 380, 30);
+		lblTitle.setText("BUSCAR PROYECTOS");
+		lblTitle.setBounds(128, 30, 242, 30);
 		lblTitle.setFont(new java.awt.Font("Verdana", 1, 18));
 
 		lblId = new JLabel();
@@ -66,19 +66,19 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 
 		lblHoras = new JLabel();
 		lblHoras.setText("Surname");
-		lblHoras.setBounds(245, 120, 80, 25);
+		lblHoras.setBounds(20, 156, 80, 25);
 		getContentPane().add(lblHoras);
 
 		textId = new JTextField();
-		textId.setBounds(61, 80, 80, 25);
+		textId.setBounds(71, 80, 80, 25);
 		getContentPane().add(textId);
 
 		textNombre = new JTextField();
-		textNombre.setBounds(61, 120, 155, 25);
+		textNombre.setBounds(71, 120, 349, 25);
 		getContentPane().add(textNombre);
 
 		textHoras = new JTextField();
-		textHoras.setBounds(300, 120, 144, 25);
+		textHoras.setBounds(71, 156, 349, 25);
 		textHoras.setEditable(false);
 		getContentPane().add(textHoras);
 
@@ -97,7 +97,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		limpiar();
 
 		setSize(480, 320);
-		setTitle("Search Client");
+		setTitle("Buscar Proyecto");
 		setLocationRelativeTo(null);
 		setResizable(false);
 		getContentPane().setLayout(null);
@@ -138,7 +138,7 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 		}
 
 		if (e.getSource() == btnModify) {
-			habilita(true, false, false, true, false, false, false);
+			habilita(true, true, true, true, true, true, true);
 
 		}
 
@@ -168,11 +168,11 @@ public class SearchProyectoView extends JFrame implements ActionListener {
 	 * @param miProyecto
 	 */
 	private void mostrarProyecto(Proyecto miProyecto) {
-		textId.setText(String.valueOf(miProyecto.getId()) + "");
+//		textId.setText(String.valueOf(miProyecto.getId()));
 		textNombre.setText(miProyecto.getNombre() + "");
 		textHoras.setText(miProyecto.getHoras() + "");
 
-		habilita(true, false, false, true, false, false, false);
+		habilita(true, false, false, true, false, true, false);
 	}
 
 	/**

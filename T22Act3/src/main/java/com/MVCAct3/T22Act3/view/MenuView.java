@@ -33,21 +33,21 @@ public class MenuView extends JFrame implements ActionListener {
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 
 		btnRegisterProyecto = new JButton();
-		btnRegisterProyecto.setBounds(100, 280, 120, 25);
+		btnRegisterProyecto.setBounds(78, 280, 143, 25);
 		btnRegisterProyecto.setText("Registrar Proyecto");
 
 		btnSearchProyecto = new JButton();
-		btnSearchProyecto.setBounds(240, 280, 120, 25);
+		btnSearchProyecto.setBounds(225, 280, 137, 25);
 		btnSearchProyecto.setText("Buscar Proyecto");
 
 		btnRegisterCientifico = new JButton();
 		btnRegisterCientifico.setText("Registrar Cientifico");
-		btnRegisterCientifico.setBounds(100, 311, 120, 25);
+		btnRegisterCientifico.setBounds(78, 311, 143, 25);
 		getContentPane().add(btnRegisterCientifico);
 
 		btnSearchCientifico = new JButton();
 		btnSearchCientifico.setText("Buscar Cientifico");
-		btnSearchCientifico.setBounds(240, 312, 120, 25);
+		btnSearchCientifico.setBounds(225, 311, 137, 25);
 		getContentPane().add(btnSearchCientifico);
 
 		lblTitle = new JLabel();
